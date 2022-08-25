@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block stylesheets %}
+
+img {
+    width: 300px;
+    height: 200px;
+}
+
+{% endblock %}
+
+{% block body %}
+<h1>Produits Vedettes</h1>
+<div class="row d-flex justify-content-center gap-5">
+{% for product in products %}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src={{ product.image }}>
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <p class="card-text">{{ product.price }}€</p>
+    <a href="#" class="btn btn-primary">Add to cart</a>
+  </div>
+</div>
+{% endfor %}
+<div class="row d-flex justify-content-center gap-5">
+{% endblock %}
