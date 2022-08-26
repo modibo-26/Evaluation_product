@@ -8,21 +8,32 @@
 
 {% block body %}
 
-<h1>Le panier</h1>
+<h1>Votre panier</h1>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Price</th>
-      <th scope="col">description</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Total</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
+   {% for list in cardList %}
+      <tr>
+        <td>{{ list.product.title }}</td>
+        <td>{{ list.product.price }}€</td>
+        <td>{{ list.product.description }}</td>
+        <td>{{ list.quantity }}</td>
+        <td>{{ list.quantity * list.product.price }}€</td>
+        <td>
+          <a href="{{ path('app_cart_add', {'id': list.product.id}) }}"><button>+</button></a>
+          <a href="{{ path('app_cart_remove', {'id': list.product.id}) }}"><button>-</button></a>
+        </td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}

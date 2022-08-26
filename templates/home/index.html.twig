@@ -21,7 +21,8 @@ img {
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.description }}</p>
     <p class="card-text">{{ product.price }}€</p>
-    <a href="#" class="btn btn-primary">Add to cart</a>
+    <a href="{{ path('app_cart_add', {'id': product.id}) }}" class="btn btn-primary">Add to cart</a>
+    <a href="{{ path('app_product_details_', {'id': product.id}) }}" class="btn btn-primary">Details</a>
   </div>
 </div>
 {% endfor %}
